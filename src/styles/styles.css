@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Noto Sans', sans-serif;
+}
+body {
+  background: #ededed;
+}
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+.header {
+  background: url('../assets/hero.jpg') no-repeat;
+  background-size: cover;
+  padding: 60px 0;
+}
+.logo-sm {
+  max-width: 140px;
+}
+.logo-lg {
+  max-width: 256px;
+}
+.header-action {
+  position: absolute;
+  top: 20px;
+  right: 0;
+}
+.header-action h2 {
+  color: #FFFFFF;
+  text-align: right;
+}
+.search {
+  display: block;
+  margin: 20px 0;
+  border: 0;
+  padding: 15px;
+  border-radius: 10px;
+  width: 400px;
+  font-size: 16px;
+  opacity: 0.7;
+  background-color: #FFFFFF;
+  background-image: url('../assets/search-icon.png');
+  background-size: 28px;
+  background-repeat: no-repeat;
+  background-position: 95%;
+}
+.search::placeholder {
+  color: #74007a;
+}
+.search:focus {
+  opacity: 1;
+}
+.rating-wrapper {
+  text-align: right;
+}
+.rating-label {
+  display: inline-block;
+  color: #FFFFFF;
+  opacity: 0.6;
+  font-size: 14px;
+  margin-right: 10px;
+}
+.rating {
+  display: inline-block;
+  position: relative;
+  top: 6px;
+}
+.content {
+  padding: 60px 0;
+}
+.section-title {
+  text-align: center;
+  border-bottom: solid #74007a 1px;
+  padding-bottom: 10px;
+}
+.query {
+  text-align: center;
+  padding-top: 10px;
+}
+.query p {
+  font-size: 14px;
+  color: #444444;
+}
+.grid {
+  margin-top: 20px;
+  margin-bottom: 60px;
+  list-style: none;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: auto auto auto;
+}
+.slider-wrapper {
+  margin-top: 20px;
+}
+.slider-wrapper .movie-card {
+  margin: 10px;
+}
+.slick-dots li {
+  margin: 0 !important;
+}
+.slick-dots li button:before,
+.slick-dots li.slick-active button:before {
+  font-size: 10px !important;
+}
+.slick-dots li.slick-active button:before {
+  color: #74007a !important;
+}
+.slick-prev:before, .slick-next:before {
+  color: #74007a !important;
+  font-size: 25px !important;
+}
+.footer {
+  padding: 60px 0;
+  background: #444444;
+}
+
+.movie-card {
+  background: #FFFFFF;
+  border-radius: 5px;
+  overflow: hidden;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+}
+.movie-card .movie-image img {
+  width: 100%;
+}
+.movie-card .movie-title {
+  color: #74007a;
+  margin-bottom: 10px;
+}
+.movie-card .movie-details {
+  padding: 10px;
+}
+.movie-card .movie-extra-data {
+  font-size: 14px;
+  color: #444444;
+}
