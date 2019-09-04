@@ -1,17 +1,34 @@
 import React from 'react';
-import lion from '../../assets/lion.png';
+import defaultImage from '../../assets/default.jpg';
 
-function MovieCard () {
+function MovieCard (props) {
+  const {
+    image,
+    title,
+    release,
+    rating
+  } = props;
+
+  const movieImage = image ? `https://image.tmdb.org/t/p/original/${image}` : defaultImage;
+  const movieImageStyle = {
+    backgroundImage: `url(${movieImage})`
+  }
+  const year = release ? release.slice(0, 4) : 'No year provided';
+  const stars = Math.round(rating) / 2;
+  const starsArr = [];
+  for (let i = 0; i < stars; i++) {
+    starsArr.push(<i className="material-icons" key={i} style={{ color: '#FFCC46' }}>grade</i>)
+  }
+
   return (
     <a className="movie-card">
-      <div className="movie-image">
-        <img src={lion} alt="movie title"/>
-      </div>
+      <div className="movie-image" style={movieImageStyle}></div>
       <div className="movie-details">
-        <h3 className="movie-title">This is the movie title can be long</h3>
-        <p className="movie-extra-data">Movie genre</p>
-        <p className="movie-extra-data">2019</p>
-        <div className="movie-rating">*****</div>
+        <h3 className="movie-title">{title}</h3>
+        <p className="movie-extra-data">{year}</p>
+        <div className="movie-rating">
+          {starsArr}
+        </div>
       </div>
     </a>
   )

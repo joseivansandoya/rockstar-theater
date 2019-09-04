@@ -1,3 +1,8 @@
+New React features usage
+- Lazy and suspense
+- Error boundaries
+- Fragments
+- Hooks (useState, useEffect)
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

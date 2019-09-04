@@ -1,15 +1,21 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
+import ErrorHandler from './components/ErrorHandler';
+import Loading from './components/ui/Loading';
 // Import App screens
-import Discover from './components/Discover';
-import Movie from './components/Movie';
+const Discover = React.lazy(() => import('./components/Discover'));
+const Movie = React.lazy(() => import('./components/Movie'));
 
 function Router () {
   return (
-    <BrowserRouter>
-      <Route path='/' exact component={Discover} />
-      <Route path='/movie/:id' component={Movie} />
-    </BrowserRouter>
+    <React.Suspense fallback={<Loading />}>
+      <BrowserRouter>
+        <ErrorHandler>
+          <Route path='/' exact component={Discover} />
+          <Route path='/movie/:id' component={Movie} />
+        </ErrorHandler>
+      </BrowserRouter>
+    </React.Suspense>
   )
 }
 
