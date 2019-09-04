@@ -198,3 +198,27 @@ body {
 .movie-card .movie-rating {
   height: 30px;
 }
+
+@media screen and (max-width: 720px) {
+  .header .container {
+    text-align: center;
+  }
+  .header .logo-lg,
+  .header .logo-lg {
+    width: 120px;
+  }
+  .header-action {
+    position: static;
+    text-align: center;
+  }
+  .header-action h2,
+  .header-action .rating-wrapper {
+    text-align: center;
+  }
+  .header-action .search {
+    display: inline-block;
+  }
+  .grid {
+    grid-template-columns: 48% 48% !important;
+  }
+}

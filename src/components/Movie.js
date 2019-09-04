@@ -54,7 +54,11 @@ function Movie (props) {
               {starsArr}
             </div>
 
-            <p className="synopsis">{movieData.overview}</p>
+            <p className="synopsis">
+              <strong>Synopsis:</strong>
+              <br/><br/>
+              {movieData.overview}
+            </p>
 
             <div className="back">
               <Link to="/">
