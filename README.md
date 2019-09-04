@@ -42,7 +42,7 @@ Each page is defined as separate components and the rest of inner web components
 ### ⚛️ Usin new React features
 
 Capitalizing the power of React, I have used the following features:
+- **Hooks `useState` and `useEffect`:** extremely useful feature when needed to implement stateful components within a functional one ([View file](https://github.com/joseivansandoya/rockstar-theater/blob/master/src/components/Discover.js))
 - **Lazy and suspense:** when loading the two different pages in the Router ([View file](https://github.com/joseivansandoya/rockstar-theater/blob/master/src/Router.js))
 - **Error boundaries:** when trying to catch if anything went wrong ([View file](https://github.com/joseivansandoya/rockstar-theater/blob/master/src/Router.js))
 - **Fragments:** useful when no extra `div` wrapper is needed ([View file](https://github.com/joseivansandoya/rockstar-theater/blob/8bf22725181bb061e7a4e5f7dc98479d1a9f6026/src/components/Discover.js#L39))
-- **Hooks `useState` and `useEffect`:** extremely useful feature when needed to implement stateful components within a functional one ([View file](https://github.com/joseivansandoya/rockstar-theater/blob/master/src/components/Discover.js))
