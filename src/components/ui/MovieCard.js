@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import defaultImage from '../../assets/default.jpg';
 
 function MovieCard (props) {
   const {
+    id,
     image,
     title,
     release,
@@ -21,16 +23,18 @@ function MovieCard (props) {
   }
 
   return (
-    <a className="movie-card">
-      <div className="movie-image" style={movieImageStyle}></div>
-      <div className="movie-details">
-        <h3 className="movie-title">{title}</h3>
-        <p className="movie-extra-data">{year}</p>
-        <div className="movie-rating">
-          {starsArr}
+    <Link to={`/movie/${id}`}>
+      <div className="movie-card">
+        <div className="movie-image" style={movieImageStyle}></div>
+        <div className="movie-details">
+          <h3 className="movie-title">{title}</h3>
+          <p className="movie-extra-data">{year}</p>
+          <div className="movie-rating">
+            {starsArr}
+          </div>
         </div>
       </div>
-    </a>
+    </Link>
   )
 }
 

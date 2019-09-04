@@ -12,7 +12,12 @@ function Header (props) {
         <div className="header-action">
           <h2>{action}</h2>
           {action == 'Discover'&&
-            <Filter />
+            <Filter
+            query={props.query}
+            setQuery={props.setQuery}
+            rating={props.rating}
+            setRating={props.setRating}
+            />
           }
         </div>
       </div>

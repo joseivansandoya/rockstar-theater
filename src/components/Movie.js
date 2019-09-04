@@ -1,27 +1,65 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Header from './ui/Header';
 import Footer from './ui/Footer';
+import Loading from './ui/Loading';
+import { getMovie } from '../api/interface';
+import defaultImage from '../assets/default.jpg';
 
 import lion from '../assets/lion.png';
 
 function Movie (props) {
+  const { match } = props;
+  const movieId = match.params.id;
+
+  const [movieData, setMovieData] = useState({});
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    if (movieId) {
+      setLoading(true);
+      (async () => setMovieData(await getMovie(movieId)))();
+      setLoading(false);
+    }
+  }, []);
+
+  if (props.loading) {
+    return <Loading />
+  }
+
+  const movieImage = movieData.poster_path ? `https://image.tmdb.org/t/p/original/${movieData.poster_path}` : defaultImage;
+  const year = movieData.release_date ? movieData.release_date.slice(0, 4) : 'No year provided';
+  let company = '';
+  if (movieData.production_companies && movieData.production_companies.length > 0) {
+    company = movieData.production_companies[0].name;
+  }
+  const stars = Math.round(movieData.vote_average) / 2;
+  const starsArr = [];
+  for (let i = 0; i < stars; i++) {
+    starsArr.push(<i className="material-icons" key={i} style={{ color: '#FFCC46' }}>grade</i>)
+  }
+
   return (
     <>
       <Header action="Movie"/>
       <div className="content movie-content">
         <div className="container">
           <div className="movie-cover">
-            <img src={lion} alt="Movie title"/>
+            <img src={movieImage} alt={movieData.title}/>
           </div>
           <div className="movie-details">
-            <h2>This is the title</h2>
-            <p className="extra">Movie Genre</p>
-            <p className="extra">2018</p>
-            <p className="extra">Universal</p>
-            <p className="synopsis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae iaculis nisl. Suspendisse eget lectus neque. Aliquam et porta felis. Vivamus ultrices ultrices fermentum. Fusce leo lectus, accumsan viverra tristique eget, feugiat id libero. Sed non nulla malesuada, convallis est quis, tempus ipsum. Phasellus sed venenatis arcu. Nam a malesuada turpis, nec porttitor orci. Duis porttitor blandit maximus. Praesent molestie ex vel nisl lacinia auctor. Etiam efficitur rhoncus lectus, sit amet aliquam dui scelerisque ac. Cras pharetra, massa sit amet dictum interdum, quam quam sollicitudin nunc, rutrum vulputate turpis nunc quis odio. Phasellus ultrices laoreet pellentesque. Nam blandit, dui sit amet aliquam iaculis, eros leo scelerisque enim, sed aliquet orci libero quis lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat, nunc eget lobortis mattis, purus nibh scelerisque neque, id fringilla metus lectus sit amet neque.</p>
+            <h2>{movieData.title}</h2>
+            <p className="extra">{year}</p>
+            <p className="extra">{company}</p>
+            <div className="movie-rating">
+              {starsArr}
+            </div>
+
+            <p className="synopsis">{movieData.overview}</p>
 
             <div className="back">
-              <a href="">Back to Discover</a>
+              <Link to="/">
+                <span>Back to Discover</span>
+              </Link>
             </div>
           </div>
           <div className="clearfix"></div>

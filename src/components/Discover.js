@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { debounce } from 'lodash';
 import Header from './ui/Header';
 import SearchContent from './ui/SearchContent';
 import PopularContent from './ui/PopularContent';
 import Footer from './ui/Footer';
 import { discover, search } from '../api/interface';
+
+const debouncedSearch = debounce(search, 200, { leading: true, trailing: false });
 
 function Discover () {
 
@@ -22,11 +25,14 @@ function Discover () {
   const [loadingSearch, setLoadingSearch] = useState(false);
   const [query, setQuery] = useState('');
   const [rating, setRating] = useState(0);
+  const performSearch  = query !== '' || rating > 0;
   // perform search if query or rating states get updated
   useEffect(() => {
-    setLoadingSearch(true);
-    (async () => setSearchResult(await search(query, rating)))();
-    setLoadingSearch(false);
+    if (performSearch) {
+      setLoadingSearch(true);
+      (async () => setSearchResult(await debouncedSearch(query, rating)))();
+      setLoadingSearch(false);
+    }
   }, [query, rating])
 
   return (
@@ -41,10 +47,9 @@ function Discover () {
 
       <div className="content">
         <div className="container">
-          {searchResult.length > 0 &&
+          {searchResult.length > 0 && performSearch &&
             <SearchContent
               searchResult={searchResult}
-              setSearchResult={setSearchResult}
               loadingSearch={loadingSearch}
             />
           }

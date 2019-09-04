@@ -27,6 +27,7 @@ function PopularContent (props) {
             return (
               <div key={movie.id}>
                 <MovieCard
+                  id={movie.id}
                   image={movie.poster_path}
                   title={movie.title}
                   release={movie.release_date}
