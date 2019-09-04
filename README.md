@@ -1,13 +1,13 @@
-New React features usage
-- Lazy and suspense
-- Error boundaries
-- Fragments
-- Hooks (useState, useEffect)
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Rockstar Theater code challenge
 
-## Available Scripts
+![Cover image](https://github.com/joseivansandoya/rockstar-theater/blob/master/src/assets/cover.jpg)
 
-In the project directory, you can run:
+Rockstar Theater is a React application that shows a set of movies retrieved from The Movie DB API. The page allows you to filter by keywords and movie rating. Once you click on a specific movie the page will come out whith details of the selected movie.
+
+## 🚀 Launch the Application
+
+To launch the application the only requirement is that you have **node** and **npm** installed in your computer.
+Install the project with `npm install` and in the project directory, you can run:
 
 ### `npm start`
 
@@ -17,57 +17,32 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
-### `npm test`
+## 👨🏻‍💻 Development notes
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+I will briefly describe the procedure taken to implement this application, as well as some notes:
 
-### `npm run build`
+### Dependencies
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+In addition to the **Create React App** needed to bootstrap the page, I used these ones:
+- **lodash:** I used its `debounce` method for wrapping the search api call
+- **react-rating:** This dependency helped me with the stars rating filter
+- **react-router-dom:** It helped me to implement the two routes that the application has
+- **react-slick:** This dependency helped me to implement a fancy carousel in the discover page
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### Application structure
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Structure](https://github.com/joseivansandoya/rockstar-theater/blob/master/src/assets/sketch.jpg)
 
-### `npm run eject`
+The application consists in two pages:
+- Discover (route `/`)
+- Movie (route `/movie/:id`)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Each page is defined as separate components and the rest of inner web components have been organized within the `ui/` directory.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### ⚛️ Usin new React features
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Capitalizing the power of React, I have used the following features:
+- **Lazy and suspense:** when loading the two different pages in the Router ([View file](https://github.com/joseivansandoya/rockstar-theater/blob/master/src/Router.js))
+- **Error boundaries:** when trying to catch if anything went wrong ([View file](https://github.com/joseivansandoya/rockstar-theater/blob/master/src/Router.js))
+- **Fragments:** useful when no extra `div` wrapper is needed ([View file](https://github.com/joseivansandoya/rockstar-theater/blob/8bf22725181bb061e7a4e5f7dc98479d1a9f6026/src/components/Discover.js#L39))
+- **Hooks `useState` and `useEffect`:** extremely useful feature when needed to implement stateful components within a functional one ([View file](https://github.com/joseivansandoya/rockstar-theater/blob/master/src/components/Discover.js))
